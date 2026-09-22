@@ -15,8 +15,8 @@ export interface ConnectRequest {
   /** 完整 URL（如 `${settings.kimiApiV2Base}/kimi.gateway.credentials.v1.APIKeyService/CreateAPIKey`） */
   url: string;
   method: 'GET' | 'POST';
-  /** Bearer token（accessToken，不是 sk-kimi） */
-  accessToken: string;
+  /** Bearer token（accessToken，不是 sk-kimi）；空字符串表示未登录调用 */
+  accessToken?: string;
   body?: unknown;
   /** 请求超时（毫秒），默认 30000 */
   timeoutMs?: number;
@@ -41,8 +41,12 @@ export async function connectRpc<T = unknown>(
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     'Connect-Protocol-Version': '1',
-    'Authorization': `Bearer ${req.accessToken}`,
   };
+
+  // 仅在提供 accessToken 时添加 Authorization 头
+  if (req.accessToken) {
+    headers['Authorization'] = `Bearer ${req.accessToken}`;
+  }
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), req.timeoutMs ?? 30000);
