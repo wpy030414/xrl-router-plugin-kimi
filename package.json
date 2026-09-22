@@ -1,0 +1,31 @@
+{
+  "version": "0.1.0",
+  "name": "xrl-router-plugin-kimi",
+  "description": "xrl-router 插件：把 Kimi Desktop (Work / Coding) 的额度包装成 OpenAI 兼容的本地服务",
+  "private": true,
+  "scripts": {
+    "serve": "tsx src/index.ts",
+    "login": "tsx scripts/login.ts",
+    "capture-key": "tsx scripts/capture-key.ts",
+    "e2e": "tsx scripts/e2e.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "qrcode-terminal": "^0.12.0",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "@types/ws": "^8.5.10",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.2"
+  }
+}

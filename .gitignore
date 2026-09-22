@@ -1,0 +1,18 @@
+# 依赖
+node_modules/
+dist/
+
+# 密钥与本机配置 —— 永不进 git
+.env
+.env.local
+.env.*.local
+
+# 抓包产物
+*.har
+captures/
+
+# 编辑器 / 系统
+.idea/
+.DS_Store
+Thumbs.db
+*.log
